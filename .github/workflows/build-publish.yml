@@ -46,5 +46,5 @@ jobs:
     # Push the Docker image to Container Registry
     - name: Publish
       run: |-
-        docker push "$REGISTRY/$IMAGE:$GITHUB_SHA"
+        docker push "$REGISTRY:$IMAGE.$GITHUB_SHA"
 

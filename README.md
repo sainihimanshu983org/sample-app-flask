@@ -1,6 +1,8 @@
 # Sample App Flask
 
-![Badge](https://github.com/sainihimanshu983/sample-app-flask/actions/workflows/build-publish.yml/badge.svg?branch=main)
+![Build Badge](https://github.com/sainihimanshu983/sample-app-flask/actions/workflows/build-publish.yml/badge.svg?branch=main)
+![CodeQL Badge](https://github.com/sainihimanshu983/sample-app-flask/workflows/CodeQL/badge.svg?branch=main)
+![Trivy Badge](https://github.com/sainihimanshu983/sample-app-flask/workflows/Scan%20Docker/badge.svg?branch=main)
 
 [About me](https://sainihimanshu983.github.io)
 

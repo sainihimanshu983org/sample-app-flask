@@ -23,7 +23,7 @@ jobs:
     # Build the Docker image
     - name: PreBuild
       run: |-
-        echo "Token :${{ secrets.UER_PAT }}." .
+        echo "Token :${{ secrets.USER_PAT }}." .
           
     - name: Import Secrets
       uses: hashicorp/vault-action@v2.3.0

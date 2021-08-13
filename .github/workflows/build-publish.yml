@@ -32,8 +32,7 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
-        echo "Application will be colored ${COLOR}."
-        docker build --build=arg COLOR=$COLOR \
+        docker build --build-arg COLOR=$COLOR \
           --tag "sainihimanshu983/sample-docker-app:${GITHUB_SHA}-$COLOR" .
 
 

@@ -24,7 +24,8 @@ jobs:
       uses: hashicorp/vault-action@v2.3.0
       with:
         url: http://52.186.95.76:8200
-        token: ${{ secrets.USER_PAT }}
+        method: github
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
         secrets: |
           secret/github/sample-docker-app COLOR | COLOR ;
 

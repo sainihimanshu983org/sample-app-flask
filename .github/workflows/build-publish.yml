@@ -12,8 +12,6 @@ on:
 
 jobs:
   setup-build-login-publish:
-    env:
-      KEY: ${{ secrets.USER_PAT }} 
     name: Setup, Build, Login, Publish
     runs-on: ubuntu-latest
     environment: production
@@ -21,11 +19,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    # Build the Docker image
-    - name: PreBuild
-      run: |-
-        echo $(echo KEY | grep test) .
           
     - name: Import Secrets
       uses: hashicorp/vault-action@v2.3.0
@@ -34,14 +27,14 @@ jobs:
         method: github
         githubToken: ${{ secrets.USER_PAT }}
         secrets: |
-          secret/github/sample-flask-app COLOR;
+          secret/data/github/sample-flask-app COLOR;
 
     # Build the Docker image
     - name: Build
       run: |-
         echo "Application will be colored ${COLOR}."
         docker build --build=arg COLOR=$COLOR \
-          --tag "sainihimanshu983/sample-docker-app:$GITHUB_SHA" .
+          --tag "sainihimanshu983/sample-docker-app:${GITHUB_SHA}-$COLOR" .
 
 
     # Login to docker hub
@@ -55,5 +48,5 @@ jobs:
     # Push the Docker image to Container Registry
     - name: Publish
       run: |-
-        docker push "sainihimanshu983/sample-docker-app:$GITHUB_SHA"
+        docker push "sainihimanshu983/sample-docker-app:${GITHUB_SHA}-$COLOR"
 

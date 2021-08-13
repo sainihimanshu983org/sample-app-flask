@@ -10,9 +10,6 @@ on:
   release:
     types: [created]
 
-env:
-  REGISTRY: ${{ secrets.REGISTRY }}
-
 jobs:
   setup-build-login-publish:
     name: Setup, Build, Login, Publish
@@ -23,12 +20,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Import Secrets
+      uses: hashicorp/vault-action@v2.3.0
+      with:
+        url: http://52.186.95.76:8200
+        token: ${{ secrets.GITHUB_TOKEN }}
+        secrets: |
+          secret/github/sample-docker-app | APP_COLOR ;
 
     # Build the Docker image
     - name: Build
       run: |-
-        docker build \
-          --tag "$REGISTRY:$GITHUB_SHA" .
+        echo "Application will be colored ${APP_COLOR}."
+        docker build --build=arg COLOR=$APP_COLOR \
+          --tag "sainihimanshu983/sample-docker-app:$GITHUB_SHA" .
 
 
     # Login to docker hub
@@ -42,5 +47,5 @@ jobs:
     # Push the Docker image to Container Registry
     - name: Publish
       run: |-
-        docker push "$REGISTRY:$GITHUB_SHA"
+        docker push "sainihimanshu983/sample-docker-app:$GITHUB_SHA"
 

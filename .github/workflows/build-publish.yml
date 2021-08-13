@@ -32,8 +32,8 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
-        docker build --build-arg COLOR=$COLOR \
-          --tag "sainihimanshu983/sample-docker-app:${GITHUB_SHA}-$COLOR" .
+        docker build --build-arg COLOR=${{ env.COLOR }} \
+          --tag "sainihimanshu983/sample-docker-app:${{ env.COLOR }}-$GITHUB_SHA" .
 
 
     # Login to docker hub
@@ -47,5 +47,5 @@ jobs:
     # Push the Docker image to Container Registry
     - name: Publish
       run: |-
-        docker push "sainihimanshu983/sample-docker-app:${GITHUB_SHA}-$COLOR"
+        docker push "sainihimanshu983/sample-docker-app:${{ env.COLOR }}-$GITHUB_SHA"
 

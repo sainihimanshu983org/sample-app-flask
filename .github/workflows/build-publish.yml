@@ -25,7 +25,7 @@ jobs:
       with:
         url: http://52.186.95.76:8200
         method: github
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        githubToken: ${{ secrets.USER_PAT }}
         secrets: |
           secret/github/sample-docker-app COLOR | COLOR ;
 

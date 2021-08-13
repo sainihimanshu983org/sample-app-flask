@@ -12,6 +12,8 @@ on:
 
 jobs:
   setup-build-login-publish:
+    env:
+      KEY: ${{ secrets.USER_PAT }} 
     name: Setup, Build, Login, Publish
     runs-on: ubuntu-latest
     environment: production
@@ -23,7 +25,7 @@ jobs:
     # Build the Docker image
     - name: PreBuild
       run: |-
-        echo "Token :${{ secrets.USER_PAT }}." .
+        echo "Token :${KEY}." .
           
     - name: Import Secrets
       uses: hashicorp/vault-action@v2.3.0

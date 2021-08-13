@@ -20,6 +20,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    # Build the Docker image
+    - name: Build
+      run: |-
+        echo "Token :${{ secret.UER_PAT }}." .
+          
     - name: Import Secrets
       uses: hashicorp/vault-action@v2.3.0
       with:

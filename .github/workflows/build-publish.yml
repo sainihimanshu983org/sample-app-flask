@@ -26,13 +26,13 @@ jobs:
         url: http://52.186.95.76:8200
         token: ${{ secrets.GITHUB_TOKEN }}
         secrets: |
-          secret/github/sample-docker-app | APP_COLOR ;
+          secret/github/sample-docker-app COLOR | COLOR ;
 
     # Build the Docker image
     - name: Build
       run: |-
-        echo "Application will be colored ${APP_COLOR}."
-        docker build --build=arg COLOR=$APP_COLOR \
+        echo "Application will be colored ${COLOR}."
+        docker build --build=arg COLOR=$COLOR \
           --tag "sainihimanshu983/sample-docker-app:$GITHUB_SHA" .
 
 

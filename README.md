@@ -1,4 +1,4 @@
-# Sample App Flask
+# Sample Docker App
 
 ![Build Badge](https://github.com/sainihimanshu983/sample-app-flask/actions/workflows/build-publish.yml/badge.svg?branch=main)
 ![CodeQL Badge](https://github.com/sainihimanshu983/sample-app-flask/workflows/CodeQL/badge.svg?branch=main)

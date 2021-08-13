@@ -1,7 +1,7 @@
 FROM python:rc-alpine3.13
 #RUN apt-get update && apt-get install -y python python-pip
-ARG COLOR = 'blue'
-ENV APP_COLOR= $COLOR
+ARG COLOR="blue"
+ENV APP_COLOR="${COLOR}"
 LABEL maintainer="sainihimanshu983@gmail.com"
 RUN pip install flask
 COPY app.py /opt/

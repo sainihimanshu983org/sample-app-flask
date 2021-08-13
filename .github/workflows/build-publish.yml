@@ -27,7 +27,7 @@ jobs:
         method: github
         githubToken: ${{ secrets.USER_PAT }}
         secrets: |
-          secret/github/sample-docker-app COLOR | COLOR ;
+          secret/github/sample-flask-app COLOR;
 
     # Build the Docker image
     - name: Build
